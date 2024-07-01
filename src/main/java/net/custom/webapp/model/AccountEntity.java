@@ -8,19 +8,24 @@ import java.util.Set;
 public class AccountEntity
 {
     @Id
-    private String customerNumber;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long customerNumber;
     @Embedded
     private Account account;
 
-    @OneToMany(mappedBy = "account")
-    private Set<Saving> savings;
+   /* @OneToMany(mappedBy = "account")
+    private Set<Saving> savings;*/
+
+    public AccountEntity()
+    {
+    }
 
     public AccountEntity(Account account)
     {
         this.account = account;
     }
 
-    public String getCustomerNumber()
+    public Long getCustomerNumber()
     {
         return customerNumber;
     }
@@ -30,8 +35,8 @@ public class AccountEntity
         return account;
     }
 
-    public Set<Saving> getSavings()
+ /*   public Set<Saving> getSavings()
     {
         return savings;
-    }
+    }*/
 }

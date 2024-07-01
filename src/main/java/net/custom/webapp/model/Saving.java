@@ -14,6 +14,10 @@ public class Saving
     private String accountType;
     private Integer availableBalance;
 
+    public Saving()
+    {
+    }
+
     public Saving(AccountEntity account, String accountType, Integer availableBalance)
     {
         this.account = account;

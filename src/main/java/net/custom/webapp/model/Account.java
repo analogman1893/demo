@@ -3,25 +3,27 @@ package net.custom.webapp.model;
 public class Account
 {
     private String customerName;
-    private String customermobile;
+    private String customerMobile;
     private String customerEmail;
     private String address1;
     private String address2;
-    private String accountType;
 
     public Account(String customerName,
-                   String customermobile,
+                   String customerMobile,
                    String customerEmail,
                    String address1,
-                   String address2,
-                   String accountType)
+                   String address2)
     {
         this.customerName = customerName;
-        this.customermobile = customermobile;
+        this.customerMobile = customerMobile;
         this.customerEmail = customerEmail;
         this.address1 = address1;
         this.address2 = address2;
-        this.accountType = accountType;
+    }
+
+    public Account()
+    {
+
     }
 
     public String getCustomerName()
@@ -29,9 +31,9 @@ public class Account
         return customerName;
     }
 
-    public String getCustomermobile()
+    public String getCustomerMobile()
     {
-        return customermobile;
+        return customerMobile;
     }
 
     public String getCustomerEmail()
@@ -49,8 +51,4 @@ public class Account
         return address2;
     }
 
-    public String getAccountType()
-    {
-        return accountType;
-    }
 }

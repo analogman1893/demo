@@ -4,11 +4,11 @@ import javax.persistence.Embedded;
 
 public class AccountReturn
 {
-    private String customerNumber;
+    private Long customerNumber;
     @Embedded
     private TransactionReturn transactionReturn;
 
-    public AccountReturn(String customerNumber, TransactionReturn transactionReturn)
+    public AccountReturn(Long customerNumber, TransactionReturn transactionReturn)
     {
         this.customerNumber = customerNumber;
         this.transactionReturn = transactionReturn;
@@ -19,7 +19,7 @@ public class AccountReturn
         this.transactionReturn = transactionReturn;
     }
 
-    public String getCustomerNumber()
+    public Long getCustomerNumber()
     {
         return customerNumber;
     }

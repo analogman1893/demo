@@ -7,7 +7,7 @@ public class AccountSavingReturn
 {
     private String customerName;
     private String customerMobile;
-    private String customerNumber;
+    private Long customerNumber;
     private String customerEmail;
     private String address1;
     private String address2;
@@ -19,11 +19,11 @@ public class AccountSavingReturn
     {
         this.customerNumber = account.getCustomerNumber();
         this.customerName = account.getAccount().getCustomerName();
-        this.customerMobile = account.getAccount().getCustomermobile();
+        this.customerMobile = account.getAccount().getCustomerMobile();
         this.customerEmail = account.getAccount().getCustomerEmail();
         this.address1 = account.getAccount().getAddress1();
         this.address2 = account.getAccount().getAddress2();
-        this.savings = account.getSavings();
+        /*this.savings = account.getSavings();*/
         this.transactionReturn = transactionReturn;
     }
 
@@ -42,7 +42,7 @@ public class AccountSavingReturn
         return customerMobile;
     }
 
-    public String getCustomerNumber()
+    public Long getCustomerNumber()
     {
         return customerNumber;
     }

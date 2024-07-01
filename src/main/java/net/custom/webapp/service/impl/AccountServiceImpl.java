@@ -48,37 +48,36 @@ public class AccountServiceImpl implements AccountService
         else
             try
             {
-                AccountEntity accountEntity = accountRepository.save(new AccountEntity(account));
+
+                AccountEntity accountEntity = new AccountEntity(account);
+                 accountEntity = accountRepository.save(accountEntity);
                 return new AccountReturn(accountEntity.getCustomerNumber(), new TransactionReturn("201", "Customer account created"));
             } catch (Exception e)
             {
-                return new AccountReturn(new TransactionReturn("400", "Error encountered during saving Account."));
+                return new AccountReturn(new TransactionReturn("400", "Error encountered during saving Account." +
+                        "[" + e.getMessage() + "]"));
             }
     }
 
     private TransactionReturn validateAccount(Account account)
     {
-        if ("".equalsIgnoreCase(account.getAccountType()))
-        {
-            return new TransactionReturn("400", "Account Type is required field.");
-        }
-        if ("".equalsIgnoreCase(account.getAddress1()))
+        if (account.getAddress1() == null || "".equalsIgnoreCase(account.getAddress1()))
         {
             return new TransactionReturn("400", "Address 1 is required field.");
         }
-        if ("".equalsIgnoreCase(account.getAddress2()))
+        if (account.getAddress2() == null || "".equalsIgnoreCase(account.getAddress2()))
         {
             return new TransactionReturn("400", "Address 2 is required field.");
         }
-        if ("".equalsIgnoreCase(account.getCustomerName()))
+        if (account.getCustomerName() == null || "".equalsIgnoreCase(account.getCustomerName()))
         {
             return new TransactionReturn("400", "Customer Name is required field.");
         }
-        if ("".equalsIgnoreCase(account.getCustomermobile()))
+        if (account.getCustomerMobile() == null || "".equalsIgnoreCase(account.getCustomerMobile()))
         {
             return new TransactionReturn("400", "Customer Mobile is required field.");
         }
-        if ("".equalsIgnoreCase(account.getCustomerEmail()))
+        if (account.getCustomerEmail() == null || "".equalsIgnoreCase(account.getCustomerEmail()))
         {
             return new TransactionReturn("400", "Email is required field.");
         }
