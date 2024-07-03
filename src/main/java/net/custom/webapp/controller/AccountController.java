@@ -16,15 +16,14 @@
 
 package net.custom.webapp.controller;
 
-import net.custom.webapp.model.Account;
-import net.custom.webapp.model.AccountReturn;
-import net.custom.webapp.model.AccountSavingReturn;
+import net.custom.webapp.model.*;
 import net.custom.webapp.service.AccountService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/ap1/v1/account")
+@RestController
+@RequestMapping("/ap1/v1/account")
 public class AccountController
 {
 
@@ -44,7 +43,11 @@ public class AccountController
     @GetMapping("/{id}")
     public AccountSavingReturn getAccount(@PathVariable String id)
     {
-        return accountService.getAccount(id);
+        AccountSavingReturn aReturn = accountService.getAccount(id);
+        return aReturn == null ?
+                new AccountSavingReturn(new AccountEntity(new Account()), new TransactionReturn("401",
+                        "Customer not found"))
+                : aReturn;
     }
 
     @PostMapping

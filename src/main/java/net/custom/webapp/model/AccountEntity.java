@@ -13,8 +13,8 @@ public class AccountEntity
     @Embedded
     private Account account;
 
-   /* @OneToMany(mappedBy = "account")
-    private Set<Saving> savings;*/
+    @OneToMany(mappedBy = "account")
+    private Set<Saving> savings;
 
     public AccountEntity()
     {
@@ -35,8 +35,8 @@ public class AccountEntity
         return account;
     }
 
- /*   public Set<Saving> getSavings()
+    public Set<Saving> getSavings()
     {
         return savings;
-    }*/
+    }
 }

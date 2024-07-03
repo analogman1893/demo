@@ -5,6 +5,7 @@ import net.custom.webapp.repository.AccountRepository;
 import net.custom.webapp.service.AccountService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,20 +23,26 @@ public class AccountServiceImpl implements AccountService
     @Override
     public List<Account> getAccounts()
     {
-        return null;
+        List<AccountEntity> accounts = accountRepository.findAll();
+        List<Account> accountList = new ArrayList<>();
+        for (AccountEntity account : accounts)
+        {
+            accountList.add(account.getAccount());
+        }
+        return accountList;
     }
 
     @Override
     public AccountSavingReturn getAccount(String id)
     {
-        Optional<AccountEntity> optionalAccountEntity = accountRepository.findById(id);
+        Optional<AccountEntity> optionalAccountEntity = accountRepository.findAccountEntityByCustomerNumber(Long.valueOf(id));
         if (optionalAccountEntity.isPresent())
         {
             AccountEntity account = optionalAccountEntity.get();
             return new AccountSavingReturn(account, new TransactionReturn("302", "Customer Account found"));
         } else
         {
-            return new AccountSavingReturn(null, new TransactionReturn("401", "Customer not found"));
+            return null;
         }
     }
 
@@ -50,7 +57,7 @@ public class AccountServiceImpl implements AccountService
             {
 
                 AccountEntity accountEntity = new AccountEntity(account);
-                 accountEntity = accountRepository.save(accountEntity);
+                accountEntity = accountRepository.save(accountEntity);
                 return new AccountReturn(accountEntity.getCustomerNumber(), new TransactionReturn("201", "Customer account created"));
             } catch (Exception e)
             {

@@ -23,7 +23,7 @@ public class AccountSavingReturn
         this.customerEmail = account.getAccount().getCustomerEmail();
         this.address1 = account.getAccount().getAddress1();
         this.address2 = account.getAccount().getAddress2();
-        /*this.savings = account.getSavings();*/
+        this.savings = account.getSavings();
         this.transactionReturn = transactionReturn;
     }
 

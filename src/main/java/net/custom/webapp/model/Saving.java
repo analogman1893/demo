@@ -9,14 +9,10 @@ public class Saving
     @Id
     private Long Id;
     @ManyToOne
-    @JoinColumn(name = "accountNumber", nullable = false)
+    @JoinColumn(name = "customerNumber", nullable = false)
     private AccountEntity account;
     private String accountType;
     private Integer availableBalance;
-
-    public Saving()
-    {
-    }
 
     public Saving(AccountEntity account, String accountType, Integer availableBalance)
     {
